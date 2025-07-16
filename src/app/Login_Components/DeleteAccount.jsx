@@ -49,7 +49,7 @@ const Navigate=useNavigate()
       let response=await axios.post('http://localhost:5000/delete',items);
       console.log(response.data)
 
-      if(response.data='User Delete Successfully'){
+      if(response.data==='User Delete Successfully'){
         toast.success(' Delete Account Successfully')
         setTimeout(() => {
           Navigate('/signup')

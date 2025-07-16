@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fineLogic, returnBook, returnOrderRemove } from '../Redux/Slice'
+import { fineLogic } from '../Redux/Slice'
 import { DashboardComponent2 } from './LoginDashboard'
-import { NavLink, Outlet } from 'react-router'
+import {  Outlet } from 'react-router'
 
 export default function Profile2() {
      const BorrowDet = useSelector((state) => state.book.BorrowDet)
@@ -12,17 +12,7 @@ export default function Profile2() {
   //const ReturnBook = useSelector((state) => state.book.ReturnBook)
   const dispatch = useDispatch()
 
-  const handleReturn=(orderId)=>{
-    dispatch(returnBook(orderId))
-
-    setTimeout(() => {
-      dispatch(returnOrderRemove(orderId))
-      
-      
-    }, 18000000);
-  
-   
-  }
+ 
   const handleFine=(orderId)=>{
     dispatch(fineLogic(orderId))
     console.log(orderId)
@@ -90,11 +80,7 @@ export default function Profile2() {
                ShowFine
                </button><br />
                 {item.fine?<h2>500</h2>:<h2>No Fine</h2>}
-                <NavLink to={'return-form'}>
-                    <button className="mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm"
-                onClick={()=>handleReturn(item.orderId)}
-                >Return</button>
-                </NavLink>
+                
               </div>
             ))}
           </div>
